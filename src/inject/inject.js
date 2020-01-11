@@ -32,6 +32,11 @@ const handleKeyUp = (e) => {
 	}
 };
 
+const clearFilter = (input) => {
+	input.value = '';
+	handleFilter('');
+};
+
 const createFilterDOM = () => {
 	const wrapper = document.createElement('div');
 	const input = document.createElement('input');
@@ -49,7 +54,7 @@ const createFilterDOM = () => {
 	filterButton.className = 'button__filter';
 
 	clearButton.innerText = 'Limpar';
-	clearButton.onclick = () => handleFilter('');
+	clearButton.onclick = () => clearFilter(input);
 	clearButton.className = 'button__clear';
 
 	wrapper.append(input, filterButton, clearButton);
