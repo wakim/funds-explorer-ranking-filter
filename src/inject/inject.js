@@ -45,7 +45,7 @@ const createFilterDOM = () => {
 
     wrapper.className = 'wrapper__filter';
 
-    input.placeholder = 'Entre os fundos separado por vírgula';
+    input.placeholder = 'Entre com os fundos separado por vírgula';
     input.className = 'input__filter';
     input.onkeyup = (event) => handleKeyUp(event);
 
