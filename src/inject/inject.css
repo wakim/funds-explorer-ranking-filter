@@ -1,0 +1,13 @@
+.button__filter, .button__clear {
+    margin-left: 1rem;
+}
+
+.input__filter {
+    min-width: 32rem;
+}
+
+.wrapper__filter {
+    border-bottom: 1px solid #00bff3;
+    padding-bottom: 10px;
+    margin: 0 20px;
+}

@@ -1,0 +1,32 @@
+{
+  "name": "Funds Explorer ranking filter",
+  "version": "0.0.1",
+  "manifest_version": 1,
+  "description": "Essa extensão adiciona uma caixa de filtro na tela de rankings de Fii's do site Funds Explorer.",
+  "homepage_url": "https://github.com/wakim/funds-explorer-ranking-filter",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "default_locale": "en",
+  "permissions": [],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.fundsexplorer.com.br/ranking"
+      ],
+      "css": [
+        "src/inject/inject.css"
+      ]
+    },
+    {
+      "matches": [
+        "https://www.fundsexplorer.com.br/ranking"
+      ],
+      "js": [
+        "src/inject/inject.js"
+      ]
+    }
+  ]
+}
