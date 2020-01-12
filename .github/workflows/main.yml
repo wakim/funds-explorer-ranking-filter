@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Create extension package
+      - uses: actions/checkout@v1
+      - run: rm -rf build/
+      - uses: montudor/action-zip@v0.1.0
+        with:
+          args: zip -qq -r build/extension.zip -d ./
+      - uses: trmcnvn/chrome-addon@v2
+        with:
+          extension: abcdefg
+          zip: build/extension.zip
+          client-id: ${{ secrets.CHROME_CLIENT_ID }}
+          client-secret: ${{ secrets.CHROME_CLIENT_SECRET }}
+          refresh-token: ${{ secrets.CHROME_REFRESH_TOKEN }}
