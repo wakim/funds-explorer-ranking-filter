@@ -4,7 +4,6 @@ on:
   push:
     tags:
       - '*'
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -15,11 +14,6 @@ jobs:
       - uses: montudor/action-zip@v0.1.0
         with:
           args: zip -qq -r build/extension.zip -d ./
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy extension package to google chrome store
-      - uses: actions/checkout@v1
       - uses: trmcnvn/chrome-addon@v2
         with:
           extension: abcdefg
