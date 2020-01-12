@@ -81,7 +81,6 @@ const setupDOM = () => {
 };
 
 const updateFilterWithHash = () => {
-    debugger;
     const hash = decodeURIComponent(window.location.hash.replace('#', ''));
 
     document.querySelector('.input__filter').value = hash;
@@ -91,11 +90,18 @@ const updateFilterWithHash = () => {
     }
 };
 
+const shouldRun = () => {
+    return Boolean(document.querySelector('#table-ranking'));
+};
+
 const setupFilter = () => {
+    if (!shouldRun()) {
+        return;
+    }
+    
     setupDOM();
     updateFilterWithHash();
 };
-
 
 chrome.extension.sendMessage({}, function(response) {
     const readyStateCheckInterval = setInterval(function() {
