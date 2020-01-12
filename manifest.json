@@ -13,7 +13,7 @@
   "content_scripts": [
     {
       "matches": [
-        "https://www.fundsexplorer.com.br/ranking"
+        "https://www.fundsexplorer.com.br/ranking*"
       ],
       "css": [
         "src/inject/inject.css"
@@ -21,7 +21,7 @@
     },
     {
       "matches": [
-        "https://www.fundsexplorer.com.br/ranking"
+        "https://www.fundsexplorer.com.br/ranking*"
       ],
       "js": [
         "src/inject/inject.js"
