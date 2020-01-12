@@ -1,4 +1,4 @@
-const showAll = (table) => {
+const showAll = table => {
     for (tr of table.querySelectorAll('tbody tr')) {
         tr.style.display = 'table-row';
     }
@@ -13,9 +13,20 @@ const filterTable = (table, terms) => {
     }
 }
 
-const handleFilter = (text) => {
+const updateHash = terms => {
+    let hash = '';
+    if (terms.length > 0) {
+        hash = `#${encodeURIComponent(terms.join(', '))}`;
+    }
+    const url = `${window.location.pathname}${window.location.search}${hash}`
+    window.history.replaceState({}, document.title, url);
+};
+
+const handleFilter = text => {
     const terms = text.split(',').map((value) => value.trim()).filter(term => term.length > 0);
     const table = document.querySelector('#table-ranking');
+
+    updateHash(terms);
 
     if (terms.length == 0) {
         showAll(table);
@@ -24,7 +35,7 @@ const handleFilter = (text) => {
     }
 };
 
-const handleKeyUp = (e) => {
+const handleKeyUp = e => {
     const keyCode = (e.keyCode ? e.keyCode : e.which);
 
     if (keyCode == '13') {
@@ -32,7 +43,7 @@ const handleKeyUp = (e) => {
     }
 };
 
-const clearFilter = (input) => {
+const clearFilter = input => {
     input.value = '';
     handleFilter('');
 };
@@ -62,11 +73,27 @@ const createFilterDOM = () => {
     return wrapper;
 };
 
-const setupFilter = () => {
+const setupDOM = () => {
     const targetSibling = document.querySelector('.section-body');
     const filterDom = createFilterDOM();
 
     targetSibling.parentNode.insertBefore(filterDom, targetSibling);
+};
+
+const updateFilterWithHash = () => {
+    debugger;
+    const hash = decodeURIComponent(window.location.hash.replace('#', ''));
+
+    document.querySelector('.input__filter').value = hash;
+
+    if (hash.length > 0) {
+        handleFilter(hash);
+    }
+};
+
+const setupFilter = () => {
+    setupDOM();
+    updateFilterWithHash();
 };
 
 
