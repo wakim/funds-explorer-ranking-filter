@@ -1,20 +1,23 @@
 name: CI
 
 on:
-  push:
-    tags:
-      - '*'
+  release:
+    types:
+      - created
+
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
+    name: Create package and deploy to google store 
     steps:
-      - name: Create extension package
-      - uses: actions/checkout@v1
-      - run: rm -rf build/
-      - uses: montudor/action-zip@v0.1.0
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Create zip file
+        uses: montudor/action-zip@v0.1.0
         with:
           args: zip -qq -r build/extension.zip -d ./
-      - uses: trmcnvn/chrome-addon@v2
+      - name: Deploy to google chrome store
+        uses: trmcnvn/chrome-addon@v2
         with:
           extension: abcdefg
           zip: build/extension.zip
