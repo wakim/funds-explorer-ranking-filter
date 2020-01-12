@@ -12,10 +12,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v1
+      - name: Create build folder
+        run: mkdir ./build
       - name: Create zip file
         uses: montudor/action-zip@v0.1.0
         with:
-          args: zip -qq -r build/extension.zip -d ./
+          args: zip -qq -r ./build/extension.zip ./
       - name: Deploy to google chrome store
         uses: trmcnvn/chrome-addon@v2
         with:
