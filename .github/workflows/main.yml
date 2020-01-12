@@ -19,7 +19,7 @@ jobs:
       - name: Deploy to google chrome store
         uses: trmcnvn/chrome-addon@v2
         with:
-          extension: abcdefg
+          extension: leimfoalkfhhklaccdhhpcjjmileikkh
           zip: build/extension.zip
           client-id: ${{ secrets.CHROME_CLIENT_ID }}
           client-secret: ${{ secrets.CHROME_CLIENT_SECRET }}
