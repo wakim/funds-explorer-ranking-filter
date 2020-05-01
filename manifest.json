@@ -1,5 +1,5 @@
 {
-  "name": "Funds Explorer ranking filter",
+  "name": "Filtro para Ranking de FII do Funds Explorer",
   "version": "0.0.1",
   "manifest_version": 2,
   "description": "Essa extensão adiciona uma caixa de filtro na tela de rankings de Fii's do site Funds Explorer.",
