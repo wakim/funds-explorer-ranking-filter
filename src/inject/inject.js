@@ -128,19 +128,24 @@ const shouldRun = () => {
 };
 
 const setupFilter = () => {
-    if (!shouldRun()) {
-        return;
-    }
-    
     setupDOM();
     updateFilterWithHash();
+};
+
+const expandContainer = () => {
+    document.querySelector('#ranking-index .container').style.width = '100%';
 };
 
 chrome.extension.sendMessage({}, function(response) {
     const readyStateCheckInterval = setInterval(function() {
     if (document.readyState === "complete") {
+        if (!shouldRun()) {
+            return;
+        }
+
         clearInterval(readyStateCheckInterval);
         setupFilter();
+        expandContainer();
     }
     }, 10);
 });
